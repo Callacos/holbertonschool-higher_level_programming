@@ -1,23 +1,21 @@
 #!/usr/bin/python3
-"""Module définissant une classe Rectangle"""
+'''
+This module contains one class Rectangle
+'''
 
 
 class Rectangle:
-    """Classe définissant un rectangle"""
-
+    """This class defines a rectangle"""
     def __init__(self, width=0, height=0):
-        """Initialise un nouveau Rectangle."""
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """Récupère la largeur du rectangle."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Définit la largeur du rectangle."""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -26,12 +24,10 @@ class Rectangle:
 
     @property
     def height(self):
-        """Récupère la hauteur du rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Définit la hauteur du rectangle."""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -39,27 +35,14 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Calcule et retourne l'aire du rectangle."""
         return self.__width * self.__height
 
     def perimeter(self):
-        """Calcule et retourne le périmètre du rectangle."""
         if self.__width == 0 or self.__height == 0:
             return 0
-        return 2 * (self.__width + self.__height)
+        return self.__width * 2 + self.__height * 2
 
     def __str__(self):
-        """Retourne une représentation du rectangle avec le caractère #."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width for _ in range(self.__height)])
-
-    def __repr__(self):
-        """Retourne une représentation string de l'objet rectangle."""
-        return f"<{self.__class__.__name__} object at {hex(id(self))}>"
-
-    def display(self):
-        """Affiche les informations du rectangle."""
-        print(f"Area: {self.area()} - Perimeter: {self.perimeter()}")
-        print(str(self))
-        print(repr(self))
+        return "\n".join("#" * self.__width for i in range(self.__height))
