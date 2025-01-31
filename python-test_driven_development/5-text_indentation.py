@@ -24,11 +24,21 @@ def text_indentation(text):
     for char in text:
         if skip_space and char == ' ':
             continue
-        skip_space = False
-
-        result += char
+        
+        if char == '\n':
+            result += char
+            skip_space = True
+        else:
+            skip_space = False
+            result += char
+            
         if char in punctuation:
             result += "\n\n"
             skip_space = True
 
-    print(result.strip(), end="")
+    lines = result.split('\n')
+    for i, line in enumerate(lines):
+        print(line.strip(), end="")
+        if i < len(lines) - 1:
+            print()
+
