@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""Square class with size validation and area method"""
+
+
 class Square:
+    """Square class with a private instance attribute: size"""
+
     def __init__(self, size=0):
         """
-        Initializes a Square instance.
+        Initializes a new Square instance.
 
         Args:
             size (int, optional): The size of the square. Defaults to 0.
