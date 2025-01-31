@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""Square class with size validation, getter, setter, and area method"""
+
+
 class Square:
+    """Square class with a private instance attribute: size"""
+
     def __init__(self, size=0):
         """
-        Initializes a Square instance.
+        Initializes a new Square instance.
 
         Args:
             size (int, optional): The size of the square. Defaults to 0.
@@ -26,6 +31,7 @@ class Square:
 
         Args:
             value (int): The size to set.
+
         Raises:
             TypeError: If value is not an integer.
             ValueError: If value is less than 0.
@@ -38,7 +44,8 @@ class Square:
 
     def area(self):
         """
-        Calculates the area of the square.
+        Calculates and returns the current square area.
+
         Returns:
             int: The area of the square.
         """
