@@ -20,7 +20,7 @@ class Dragon(SwimMixin, FlyMixin):
 
     def roar(self):
         """Méthode spécifique au dragon pour rugir."""
-        print("Le dragon rugit !")
+        print("The dragon roars!")
 
 
 # Test de la classe Dragon
