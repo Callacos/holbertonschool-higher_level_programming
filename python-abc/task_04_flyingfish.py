@@ -20,7 +20,7 @@ class Bird:
 
     def habitat(self):
         """Méthode pour décrire l'habitat."""
-        print("L'oiseau vit dans le ciel.")
+        print("The flying fish is soaring!")
 
 
 class FlyingFish(Fish, Bird):
@@ -28,15 +28,15 @@ class FlyingFish(Fish, Bird):
 
     def fly(self):
         """Méthode surchargée pour voler."""
-        print("Le poisson volant plane !")
+        print("The flying fish is soaring!")
 
     def swim(self):
         """Méthode surchargée pour nager."""
-        print("Le poisson volant nage !")
+        print("The flying fish is swimming!")
 
     def habitat(self):
         """Méthode surchargée pour décrire l'habitat."""
-        print("Le poisson volant vit à la fois dans l'eau et dans le ciel !")
+        print("The flying fish lives both in water and the sky!")
 
 
 # Test de la classe FlyingFish
