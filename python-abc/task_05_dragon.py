@@ -4,7 +4,7 @@ class SwimMixin:
 
     def swim(self):
         """Méthode pour nager."""
-        print("La créature nage !")
+        print("The creature swims!")
 
 
 class FlyMixin:
@@ -12,7 +12,7 @@ class FlyMixin:
 
     def fly(self):
         """Méthode pour voler."""
-        print("La créature vole !")
+        print("The creature flies!")
 
 
 class Dragon(SwimMixin, FlyMixin):
@@ -27,7 +27,7 @@ class Dragon(SwimMixin, FlyMixin):
 if __name__ == "__main__":
     draco = Dragon()
 
-    print("Capacités du dragon :")
+    print("The dragon roars!")
     draco.swim()
     draco.fly()
     draco.roar()
