@@ -1,68 +1,52 @@
 #!/usr/bin/python3
-from abc import ABC, abstractmethod
-import math
 
-
-class Shape(ABC):
-    """Classe abstraite représentant une forme géométrique."""
-
-    @abstractmethod
-    def area(self):
-        """Calcule l'aire de la forme."""
-        pass
-
-    @abstractmethod
-    def perimeter(self):
-        """Calcule le périmètre de la forme."""
-        pass
-
-
-class Circle(Shape):
+class Circle:
     """Classe représentant un cercle."""
 
     def __init__(self, radius):
-        """Initialise un cercle avec un rayon donné."""
         self.radius = radius
 
     def area(self):
-        """Calcule l'aire du cercle."""
-        return math.pi * self.radius ** 2
+        """Calcule et retourne l'aire du cercle."""
+        return 3.14 * (self.radius ** 2)
 
     def perimeter(self):
-        """Calcule le périmètre du cercle."""
-        return 2 * math.pi * self.radius
+        """Calcule et retourne le périmètre du cercle."""
+        return 2 * 3.14 * self.radius
 
 
-class Rectangle(Shape):
+class Rectangle:
     """Classe représentant un rectangle."""
 
     def __init__(self, width, height):
-        """Initialise un rectangle avec une largeur et une hauteur données."""
         self.width = width
         self.height = height
 
     def area(self):
-        """Calcule l'aire du rectangle."""
+        """Calcule et retourne l'aire du rectangle."""
         return self.width * self.height
 
     def perimeter(self):
-        """Calcule le périmètre du rectangle."""
+        """Calcule et retourne le périmètre du rectangle."""
         return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
-    """Affiche l'aire et le périmètre d'une forme."""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    """Affiche les informations d'une forme géométrique.
+
+    Args:
+        shape: Objet représentant la forme géométrique
+    """
+    print(f"Aire: {shape.area()}")
+    print(f"Périmètre: {shape.perimeter()}")
 
 
-if __name__ == "__main__":
-    # Test avec un cercle et un rectangle
-    circle = Circle(5)
-    rectangle = Rectangle(4, 6)
+# Script demonstrating the use of duck typing with geometric shapes
+circle = Circle(radius=5)
+rectangle = Rectangle(width=4, height=7)
 
-    print("Cercle:")
-    shape_info(circle)
+# Call shape_info to display information about the circle
+shape_info(circle)
 
-    print("\nRectangle:")
-    shape_info(rectangle)
+# Call shape_info to display information about the rectangle
+shape_info(rectangle)
