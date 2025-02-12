@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""Module pour lire un fichier texte (UTF8) et afficher son contenu sur stdout."""
-
+""" Module that reads a text file (UTF8) and prints it to stdout """
 
 def read_file(filename=""):
-    """Lit un fichier texte (UTF8) et affiche son contenu sur stdout """
+    """ Reads a text file (UTF8) and prints it to stdout """
     with open(filename, encoding="utf-8") as f:
         read = f.read()
         print(read, end="")
