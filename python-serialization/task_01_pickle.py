@@ -5,7 +5,9 @@ Module for custom object serialization using pickle.
 
 import pickle
 
+
 class CustomObject:
+
     """
     A custom class with serialization and deserialization capabilities.
     """
@@ -47,12 +49,6 @@ class CustomObject:
     def deserialize(cls, filename):
         """
         Deserialize an object from a file.
-
-        Args:
-        filename (str): The name of the file to load the serialized object from.
-
-        Returns:
-        CustomObject or None: The deserialized object, or None if an error occurred.
         """
         try:
             with open(filename, 'rb') as file:
@@ -60,4 +56,3 @@ class CustomObject:
         except (FileNotFoundError, pickle.UnpicklingError) as e:
             print(f"Error deserializing object: {e}")
             return None
-
