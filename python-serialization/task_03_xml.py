@@ -1,36 +1,26 @@
 #!/usr/bin/python3
-import pickle
+""" Module that contains a function that serializes a dictionary to XML"""
+import xml.etree.ElementTree as ET
 
 
-class CustomObject:
-    """Custom object class"""
-    def __init__(self, name, age, is_student):
-        """Constructor method"""
-        self.name = name
-        self.age = age
-        self.is_student = is_student
+def serialize_to_xml(dictionary, filename):
+    """Serializes a dictionary to XML"""
+    root = ET.Element("data")
+    for key, value in dictionary.items():
+        child = ET.SubElement(root, key)
+        child.text = str(value)
 
-    def display(self):
-        """Display method"""
-        print("Name: {}".format(self.name))
-        print("Age: {}".format(self.age))
-        print("Is Student: {}".format(self.is_student))
+    tree = ET.ElementTree(root)
+    tree.write(filename, encoding="utf-8", xml_declaration=True)
 
-    def serialize(self, filename):
-        """Serialize method"""
-        try:
-            with open(filename, "wb") as f:
-                pickle.dump(self, f)
-            return True
-        except Exception:
-            return None
 
-    @classmethod
-    def deserialize(cls, filename):
-        """Deserialize method"""
-        try:
-            with open(filename, "rb") as f:
-                return pickle.load(f)
+def deserialize_from_xml(filename):
+    """Deserializes a dictionary from XML"""
+    tree = ET.parse(filename)
+    root = tree.getroot()
 
-        except Exception:
-            return None
+    result = {}
+    for child in root:
+        result[child.tag] = child.text
+
+    return result
