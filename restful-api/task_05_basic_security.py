@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager, jwt_required
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_httpauth import HTTPBasicAuth
-from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, JWTManager
+
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
