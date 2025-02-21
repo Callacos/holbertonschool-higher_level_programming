@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''this modul is for basic security in flask'''
 from flask import Flask, jsonify, request
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_httpauth import HTTPBasicAuth
 import datetime
@@ -101,7 +101,8 @@ def handle_needs_fresh_token_error(err):
 @jwt_required()
 def admin_only():
     """Route réservée aux administrateurs."""
-    if get_jwt_claims()['role'] != 'admin':
+    current_user = get_jwt_identity()
+    if users[current_user]['role'] != 'admin':
         return jsonify({"error": "Admin access required"}), 403
     return jsonify({"message": "Admin Access: Granted"}), 200
 
