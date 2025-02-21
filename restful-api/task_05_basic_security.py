@@ -105,8 +105,8 @@ def login():
 
     if (username in users
             and check_password_hash(users[username]['password'], password)):
-        token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
+        access_token = create_access_token(identity=username)
+        return jsonify({"access_token": access_token}), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401
 
