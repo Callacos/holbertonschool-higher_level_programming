@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 '''this modul is for basic security in flask'''
 from flask import Flask, jsonify, request
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+from flask_jwt_extended import JWTManager, jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_httpauth import HTTPBasicAuth
-import datetime
+
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -36,7 +37,7 @@ def verify_password(username, password):
 @auth.login_required
 def basic_protected():
     """Route protégée par l'authentification de base."""
-    return jsonify({"message": "Basic Auth: Access Granted"})
+    return "Basic Auth: Access Granted", 401
 
 
 @app.route("/login", methods=["POST"])
@@ -55,7 +56,7 @@ def login():
     if (username in users
             and check_password_hash(users[username]['password'], password)):
         token = create_access_token(identity=username)
-        return jsonify(token=token)
+        return jsonify(token=token), 200
     else:
         return jsonify({"error": "Invalid username or password"}), 401
 
@@ -104,7 +105,7 @@ def admin_only():
     current_user = get_jwt_identity()
     if users[current_user]['role'] != 'admin':
         return jsonify({"error": "Admin access required"}), 403
-    return jsonify({"message": "Admin Access: Granted"}), 200
+    return "Admin Access: Granted", 200
 
 
 @app.route("/refresh", methods=["POST"])
