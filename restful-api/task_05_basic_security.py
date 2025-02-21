@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''this modul is for basic security in flask'''
 from flask import Flask, jsonify, request
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
