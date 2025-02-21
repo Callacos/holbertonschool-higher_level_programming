@@ -26,41 +26,6 @@ users = {
 }
 
 
-@auth.verify_password
-def verify_password(username, password):
-    if username in users:
-        if check_password_hash(users[username]['password'], password):
-            return username
-
-
-@app.route("/basic-protected")
-@auth.login_required
-def basic_protected():
-    """Route protégée par l'authentification de base."""
-    return "Basic Auth: Access Granted", 401
-
-
-@app.route("/login", methods=["POST"])
-def login():
-    """Gère la connexion et génère un token JWT."""
-    if not request.is_json:
-        return jsonify({"error": "Missing JSON in request"}), 400
-
-    data = request.get_json()
-    username = data.get("username")
-    password = data.get("password")
-
-    if not username or not password:
-        return jsonify({"error": "Username and password are required"}), 400
-
-    if (username in users
-            and check_password_hash(users[username]['password'], password)):
-        token = create_access_token(identity=username)
-        return jsonify(token=token), 200
-    else:
-        return jsonify({"error": "Invalid username or password"}), 401
-
-
 @app.route("/jwt-protected", methods=["GET"])
 @jwt_required()
 def jwt_protected():
@@ -113,6 +78,41 @@ def admin_only():
 def refresh():
     """Rafraîchit le token JWT."""
     pass
+
+
+@auth.verify_password
+def verify_password(username, password):
+    if username in users:
+        if check_password_hash(users[username]['password'], password):
+            return username
+
+
+@app.route("/basic-protected")
+@auth.login_required
+def basic_protected():
+    """Route protégée par l'authentification de base."""
+    return "Basic Auth: Access Granted"
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    """Gère la connexion et génère un token JWT."""
+    if not request.is_json:
+        return jsonify({"error": "Missing JSON in request"}), 400
+
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 400
+
+    if (username in users
+            and check_password_hash(users[username]['password'], password)):
+        token = create_access_token(identity=username)
+        return jsonify(token=token), 200
+    else:
+        return jsonify({"error": "Invalid username or password"}), 401
 
 
 if __name__ == "__main__":
