@@ -1,4 +1,4 @@
---
+-- create a table cities with the following requirements:
 CREATE DATABASE if not exists `hbtn_0d_usa`;
 USE hbtn_0d_usa;
 CREATE TABLE IF NOT EXISTS cities (id INT PRIMARY KEY AUTO_INCREMENT,
