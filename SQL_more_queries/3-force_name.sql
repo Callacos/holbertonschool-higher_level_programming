@@ -1,0 +1,2 @@
+-- Create a table force_name with columns id and name. The id column should be an integer and the name column should be a string of length 256.
+CREATE TABLE IF NOT EXISTS force_name (id INT, name VARCHAR(256));
