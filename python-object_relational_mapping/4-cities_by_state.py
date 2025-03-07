@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This 
+This
 """
 import sys
 import MySQLdb
