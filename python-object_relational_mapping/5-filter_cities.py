@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """
 This
 """
@@ -11,7 +10,7 @@ if __name__ == "__main__":
     try:
         # Check if all arguments are provided
         if len(sys.argv) != 4:
-            print("Usage: {} username password database state name".format(sys.argv[0]))
+            print("Usage: {} username password database state".format(sys.argv[0]))
             sys.exit(1)
 
         db = MySQLdb.connect(
@@ -28,10 +27,9 @@ if __name__ == "__main__":
                     ON cities.state_id = states.id \
                     WHERE CONVERT (states.name USING Latin1) \
                     COLLATE Latin1_General_CS = %s \
-        ORDER BY c.id ASC""")
+        			ORDER BY c.id ASC""")
         rows = cursor.fetchall()
-        for row in rows:
-            print(row)
+        print(", ".join([row[0] for row in rows]))
 
         cursor.close()
         db.close()
