@@ -10,6 +10,8 @@ Base = declarative_base(metadata=meta)
 
 
 class State(Base):
+    """
+	This is the State class"""
     __tablename__ = 'states'
     id = Column(Integer,
                 autoincrement=True,
