@@ -5,34 +5,43 @@ This
 import sys
 import MySQLdb
 
-
 if __name__ == "__main__":
-    try:
-        # Check if all arguments are provided
-        if len(sys.argv) != 4:
-            print("Usage: {} username password database state".format(sys.argv[0]))
-            sys.exit(1)
+    if len(sys.argv) != 5:
+        msg = "Usage: {} <username> <password> <database> <state>"
+        print(msg.format(sys.argv[0]))
+        sys.exit(1)
 
+    username, password, db_name, state_name = sys.argv[1:5]
+
+    try:
         db = MySQLdb.connect(
             host="localhost",
             port=3306,
-            user=sys.argv[1],
-            passwd=sys.argv[2],
-            db=sys.argv[3]
+            user=username,
+            passwd=password,
+            db=db_name
         )
 
         cursor = db.cursor()
-        cursor.execute("""SELECT cities.name \
-                    FROM cities JOIN states \
-                    ON cities.state_id = states.id \
-                    WHERE CONVERT (states.name USING Latin1) \
-                    COLLATE Latin1_General_CS = %s \
-        			ORDER BY c.id ASC""")
-        rows = cursor.fetchall()
-        print(", ".join([row[0] for row in rows]))
 
-        cursor.close()
-        db.close()
+        query = """
+        SELECT cities.name
+        FROM cities
+        JOIN states ON cities.state_id = states.id
+        WHERE states.name = %s
+        ORDER BY cities.id ASC
+        """
+
+        cursor.execute(query, (state_name,))
+
+        cities = cursor.fetchall()
+
+        print(", ".join(city[0] for city in cities))
+
     except MySQLdb.Error as e:
-        print("MySQL Error: {}".format(e))
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
         sys.exit(1)
+
+    finally:
+        if db:
+            db.close()
