@@ -2,18 +2,14 @@
 '''
 Implementation of the State class
 '''
-from sqlalchemy import Column, Integer, String, MetaData
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-
-meta = MetaData()
-Base = declarative_base(metadata=meta)
+from model_state import Base, State
 
 
-class State(Base):
-    __tablename__ = 'states'
-    id = Column(Integer,
-                autoincrement=True,
-                unique=True,
-                primary_key=True,
-                nullable=False)
+class City(Base):
+    """Representation of a city"""
+    __tablename__ = 'cities'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
