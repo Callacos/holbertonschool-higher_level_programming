@@ -1,0 +1,328 @@
+/* Style global */
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+    font-family: Arial, sans-serif;  
+}  
+
+body {  
+    background-color: black;  
+    color: white;  
+    text-align: center;  
+}  
+
+/* HEADER */
+header {  
+    background-color: red;  
+    padding: 20px;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	gap: 150px;
+	
+}  
+
+.logo {  
+    width: 170px;  
+    height: 200px;
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    background-position: center;  
+}
+
+nav ul {  
+    list-style: none;  
+    display: flex;  
+    gap: 75px;  
+}  
+
+nav a {  
+    text-decoration: none;  
+    color: white;  
+    font-weight: bold;
+	font-size: 20px; /* Augmente la taille du texte */
+    font-weight: bold; /* Rend le texte plus épais */
+	padding: 10px 20px;  
+    border-radius: 5px;
+	display: inline-block; 
+    transition: transform 0.3s ease-in-out; /* Animation fluide */
+}
+
+nav a:hover {  
+    transform: scale(1.8); /* Agrandit légèrement l'option */
+}
+
+/* HERO SECTION */
+.hero {  
+    background-image: url('https://cdn.ferrari.com/cms/network/media/img/resize/6673fe6251b1d700111f8d73-laferrari_20240627_cover_1300x730_v2.jpg?w=1920&h=1080');
+	background-size: cover; 
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 0;
+	height: 60vh; /* Augmente la hauteur au-delà de l'écran */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Place le contenu en bas */
+    align-items: center; /* Centre horizontalement */
+    text-align: center;
+    color: white;
+}
+
+.hero .text {
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour la lisibilité */
+    padding: 15px 20px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    16% { color: orange; }
+    33% { color: yellow; }
+    50% { color: green; }
+    66% { color: blue; }
+    83% { color: indigo; }
+    100% { color: violet; }
+}
+
+.hero h1, .hero p { /* Applique l'effet aux titres et paragraphes */
+    animation: rainbow 3s infinite linear;
+}
+
+.hero img {  
+    width: 80%;  
+    max-width: 800px;  
+}  
+
+button {  
+    padding: 10px 20px;  
+    background: red;  
+    color: white;  
+    border: none;  
+    cursor: pointer;  
+    margin-top: 15px;  
+    font-size: 16px;  
+    border-radius: 5px;  
+    transition: transform 0.3s ease-in-out; /* Animation fluide */
+}
+
+button:hover {  
+    transform: scale(1.8); /* Agrandit légèrement */
+}
+
+
+/* SECTIONS GÉNÉRALES */
+section {  
+    padding: 50px 20px;  
+}  
+
+h2 {  
+    font-size: 2em;  
+    margin-bottom: 10px;  
+}  
+
+.subtitle {  
+    font-size: 1.2em;  
+    color: red;  
+}
+
+.services {  
+    display: flex;
+	flex-direction: column;  /* Aligne les éléments verticalement */
+    align-items: center;  
+    justify-content: space-around;  
+    gap: 20px;  
+    flex-wrap: wrap;  
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.services-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.services-header h2 {
+    font-size: 40px;
+    margin-bottom: 70px;
+}
+
+.services-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+.service-box {
+    background:red;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+	margin-bottom: 20px;
+}
+
+.service-box:hover {
+    transform: scale(1.05);
+}
+
+.service-box h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.service-box p {
+    font-size: 16px;
+    color: #444;
+}
+
+.works {  
+    display: flex;
+    flex-direction: column;  /* Aligne les éléments verticalement */
+    align-items: flex-start 70%;
+    background-image: url('https://www.pneus-net.com/wp-content/uploads/2017/12/usine-ferrari.jpg');
+    background-size: cover; /* L'image couvre tout l'élément */
+    background-position: center center;
+    background-repeat: no-repeat;
+	background-position: center 80%; 
+    padding: 0;  /* Enlève l'espace autour de l'image */
+    text-align: center;
+    flex-wrap: wrap; 
+    height: 70vh;  /* Ajuste la hauteur selon tes besoins */
+    justify-content: center;  /* Centrer le contenu verticalement */
+    gap: 20px;
+}
+
+.works h2, .works p {
+	color: yellow;
+	font-size: 100px;
+    text-align: left;  /* Aligne le texte à gauche dans les éléments contenant du texte */
+	text-align: left;  
+    width: 100%;  
+    padding-left: 170px;
+	
+}
+
+.work-list {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.about {  
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center; /* Centre le titre et le sous-titre */
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.about h2 {
+    font-size: 40px;
+    margin-bottom: 20px; /* Espace sous le titre */
+}
+
+.about p {
+    font-size: 18px;
+    margin-bottom: 50px; /* Augmente l'espace entre le sous-titre et l'image */
+}
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Éloigne l'image et le texte */
+    width: 85%;
+}
+
+.about img {
+    width: 100%; /* Augmente la taille de l’image */
+    max-width: 750px;
+	margin-left: -20%; /* Ajuste la taille maximale */
+}
+
+.about-text {
+    width: 40%; /* Ajuste la largeur du texte */
+    text-align: left;
+}
+
+.news {  
+	display: flex;
+	flex-direction: column; /* Aligne les éléments verticalement */
+	align-items: center; /* Centre le titre et le sous-titre */
+	text-align: center;
+	padding: 100px 20px;
+}
+
+.news-list {  
+    display: flex;  
+    justify-content: space-between; /* Répartit les éléments sur la ligne */
+    gap: 20px; /* Ajoute un espace entre les éléments */
+    flex-wrap: wrap; /* Permet le retour à la ligne si l'écran est trop petit */
+}
+
+.news-box {  
+    text-align: center; /* Centre le texte sous chaque image */
+    width: 30%; /* Ajuste la largeur pour tenir sur la ligne */
+}
+
+.news-box img {  
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: auto; /* Garde le ratio */
+}
+
+footer {  
+    background-color: red;  
+    padding: 20px;  
+    color: white;  
+}
+
+.footer-top {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    margin-bottom: 20px;  
+}
+
+.footer-top .logo img {  
+    width: 150px; /* Ajuste la taille du logo */
+}
+
+.social-links {  
+    display: flex;  
+    justify-content: flex-end; /* Aligne les icônes à droite */
+    gap: 15px; /* Espace entre les icônes */
+}
+
+.social-links a {  
+    color: white;  
+    text-decoration: none;  
+    font-size: 20px; /* Taille des icônes */
+}
+
+.social-links a:hover {  
+    opacity: 0.7; /* Effet au survol des icônes */
+}
+
+hr {  
+    border: 1px solid white;  
+    margin: 20px 0;  
+}
+
+.footer-bottom {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+}
+
+.footer-bottom a {  
+    color: white;  
+    text-decoration: none;  
+    margin: 0 10px;  
+}
+
+.footer-bottom a:hover {  
+    text-decoration: underline;  
+}
